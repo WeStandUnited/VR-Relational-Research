@@ -14,6 +14,16 @@ public List<GameObject> sphereList = new List<GameObject>(12);//List of spheres
 public static List<int> selectedNums = new List<int>(12);//list of index order for spherelist spheres will be activated
 public static int selectedPointer = 0;//starts at 0 when trigger from ColorChanger2 is delivered we increment by 1 index
 int randomLineSelector = new System.Random().Next(0,35);//Selects Line from Set File with random sets from 0-11
+
+public static string objectNums_for_File;
+public static string masterTime;
+
+
+public static string masterPosition;
+public float x;
+public float y;
+
+
 public System.Diagnostics.Stopwatch stopWatch = new Stopwatch();
 
 
@@ -23,9 +33,14 @@ public System.Diagnostics.Stopwatch stopWatch = new Stopwatch();
     {
     ReadFromFile();
     selectedNums.Add(12);//THIS IS HERE TO BE ON THE END OF THE selectedNums to make it activate the hidden sphere
-    UnityEngine.Debug.Log("NUMS:"+selectedNums[1]);
+    //UnityEngine.Debug.Log("NUMS:"+selectedNums[1]);
     stopWatch.Start();//start timer
+  //  vPos = sphereList.Find(selectedNums[1]);
+    GameObject temp = sphereList.Where(obj => obj.name ==(selectedNums[selectedPointer]).ToString()).SingleOrDefault();
+    RecordPosition(temp.transform.position.x,temp.transform.position.y);
+    temp = null;
 
+    masterTime = "0";
 
     }
 
@@ -33,11 +48,20 @@ public System.Diagnostics.Stopwatch stopWatch = new Stopwatch();
     void Update()
     {
       if(ColorChanger2.trigger){
+    //  RecordPosition(selectedNums[selectedPointer].transform.position);
 
       selectedPointer++;
-      WriteTime(stopWatch.ElapsedMilliseconds);
       ColorChanger2.trigger = false;
+      RecordTime(stopWatch.ElapsedMilliseconds);
+      GameObject temp = sphereList.Where(obj => obj.name ==(selectedNums[selectedPointer]).ToString()).SingleOrDefault();
+      RecordPosition(temp.transform.position.x,temp.transform.position.y);
+      temp = null;
+
       stopWatch.Reset();
+      stopWatch.Start();
+      }
+      if (selectedPointer == 11){
+        WriteAll();
       }
 
 
@@ -78,11 +102,11 @@ public void ReadFromFile(){
 StreamReader sr = new StreamReader(filepath);
 
 string line = File.ReadLines(filepath).Skip(randomLineSelector).Take(1).First();
-WriteHeader(line);
+
 UnityEngine.Debug.Log(line);
 
 //need to split line for commas into array them move array to List
-
+objectNums_for_File = line;
 selectedNums = StringToIntList(line).ToList();
 
 }// ENd Read From File
@@ -110,20 +134,30 @@ public static IEnumerable<int> StringToIntList(string str) {
             yield return num;
     }
 }//End StringToIntList
-public void WriteTime(long time){
+public static void RecordTime(long time){
+// convert to string
+string s_time = time.ToString();
+//append to masterTime String
+masterTime = masterTime + ","+s_time;
+}
 
+public static void RecordPosition(float x,float y){
 
+  masterPosition = masterPosition+"("+x.ToString()+"|"+y.ToString()+")"+",";
 
 
 }
 
 
-public void WriteHeader(string line){
+public void WriteAll(){
 
+  File.Create(StageController.path).Dispose();
+  File.WriteAllText(StageController.path,"ObjectNum,"+objectNums_for_File+"\nTime,"+masterTime+"\nObjectPos,"+masterPosition);// not writing for some reason
 
 
 
 }
+
 
 
 

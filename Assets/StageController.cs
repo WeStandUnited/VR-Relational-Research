@@ -1,10 +1,14 @@
+using System.IO;
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class StageController : MonoBehaviour
 {
+  public static string userid = "1";
   public static int currentStageNum;
+  public static bool submit = true;
+  public static string path = @"C:\Expirments\";
   /*0 is INTRO - User selects there ID number
     1 is The challenge game the User is given
     2 is the questionaire the user is given at the end
@@ -18,23 +22,46 @@ public class StageController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      switch(currentStageNum){
+      if (userid.Length >= 1 && submit == true){
+        currentStageNum = 1;
+        path = path+userid+".csv";
 
-        case 1:
-        //if the submit button is selected with at least 1=> int eg(21 or 1)
+        submit = false;
+        switch(currentStageNum){
 
-        break;
+          case 1:
+          //if the submit button is selected with at least 1=> int eg(21 or 1)
+          if (File.Exists(path)){
 
-        case 2:
-
-
-
-        break;
-
-        default:
+            currentStageNum = 0;
 
 
-        break;
-}
+          }
+          break;
+
+          case 2:
+
+
+
+          break;
+
+          default:
+
+
+          break;
+  }
+      }
+
+
+
+
+
+
+
+
+
+
+
+
       }
     }
