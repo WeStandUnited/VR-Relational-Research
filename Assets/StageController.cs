@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class StageController : MonoBehaviour
 {
-  public static string userid = "1";
+  public static string userid = "1";//this will be changed by the user
   public static int currentStageNum;
   public static bool submit = true;
   public static string path = @"C:\Expirments\";
@@ -34,7 +34,7 @@ public class StageController : MonoBehaviour
           if (File.Exists(path)){
 
             currentStageNum = 0;
-
+            path =  @"C:\Expirments\";
 
           }
           break;

@@ -41,9 +41,9 @@ public void Activate(){
 
 
 public void TriggerMe(){
-  UnityEngine.Debug.Log("Hit: "+value);
+  //UnityEngine.Debug.Log("Hit: "+value);
   if (value == RandomSelector.selectedNums[RandomSelector.selectedPointer]){
-UnityEngine.Debug.Log("Inside If");
+//UnityEngine.Debug.Log("Inside If");
     ChangeDone();
   }
 
