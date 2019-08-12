@@ -1,5 +1,7 @@
 # XR-Project-GIT
- 
+
+Dependants: Unity 2018.3.14f1
+
 Step 1) Create folder C:\Expirments
 
 Step 2) Copy Folders bin and UserData to this Folder
