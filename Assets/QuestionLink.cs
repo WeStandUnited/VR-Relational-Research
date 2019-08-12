@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TypingLink : MonoBehaviour
+public class QuestionLink : MonoBehaviour
 {
-
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +13,7 @@ public class TypingLink : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      
-      GetComponent<TextMesh>().text = IntroTyping.currentID;
+      GetComponent<TextMesh>().text = QuestionController.currentQuestion;
+
     }
 }

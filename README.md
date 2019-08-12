@@ -1,2 +1,12 @@
 # XR-Project-GIT
  
+Step 1) Create folder C:\Expirments
+
+Step 2) Copy Folders bin and UserData to this Folder
+
+Step 3) Create Questions by finding Questions.txt and following Format 
+	(e.g) Question: How are you doing today?
+
+Step 4) Run through app and Find collected data in UserData folder
+	NOTE: UserID is the name of the file 
+

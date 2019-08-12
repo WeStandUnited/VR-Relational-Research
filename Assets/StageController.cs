@@ -10,7 +10,7 @@ public class StageController : MonoBehaviour
   public static string userScore;
   public static int currentStageNum;
   public static bool submit = false;
-  public static string path = @"C:\Expirments\";
+  public static string path = @"C:\Expirments\UserData\";
   /*0 is INTRO - User selects there ID number
     1 is The challenge game the User is given
     2 is the questionaire the user is given at the end
@@ -28,14 +28,15 @@ public class StageController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      if (submit == true){
-        //currentStageNum = 1;
+
+
+
+      if (submit == true){// STAGE ONE IF
+        currentStageNum = 1;
 
 
         submit = false;
-        switch(currentStageNum){
 
-          case 1:
           path = path+userid+".csv";
           //if the submit button is selected with at least 1=> int eg(21 or 1)
           if (File.Exists(path)){
@@ -55,24 +56,21 @@ public class StageController : MonoBehaviour
 
 
 
+      }//END STAGE 1 IF
+
+      if (RandomSelector.selectedPointer == 12){//STAGE 2 IF (SURVEY)
+
+        currentStageNum = 2;
+
+        if(currentStageNum == 2){
+          stages[1].SetActive(false);
+          stages[currentStageNum].SetActive(true);
 
 
-          break;
 
-          case 2:
+        }
 
-
-
-          break;
-
-          default:
-
-
-          break;
-  }
       }
-
-
 
 
 

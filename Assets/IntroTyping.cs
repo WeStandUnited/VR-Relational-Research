@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class IntroTyping : MonoBehaviour
 {
-
+  public static string currentID = "0";
 
     // Start is called before the first frame update
     void Start()
@@ -18,50 +19,102 @@ public class IntroTyping : MonoBehaviour
 
     }
 
+    /*
+
+    Intro Methods
+
+    */
+
     public void Trigger(){
-
-      if (StageController.userid.Length == 3){
-
-
-StageController.userid = "0";
-
-      }else {
-StageController.userid += gameObject.name;
-
+      if (IntroTyping.currentID.Length == 3){
+        IntroTyping.currentID = "0";
 
       }
 
+    
+
+
+if (IntroTyping.currentID != "0"){
+
+  IntroTyping.currentID = IntroTyping.currentID + gameObject.name;
+}else {
+  IntroTyping.currentID = gameObject.name;
+
+}
+
+
+
+
+
+/*
+else if (StageController.userid.Substring(2) != "0"){
+
+  StageController.userid.Substring(2) = gameObject.name;
+}
+
+*/
+
+
+
+
+
 
     }
-    public void submitTrigger(){
 
-
-
-         StageController.submit = true;
-          UnityEngine.Debug.Log(StageController.submit);
-
-
-
-    }
     public void ClearTrigger(){
 
-      StageController.userid = "0";
+      IntroTyping.currentID = "0";}
+
+/*
+
+Survey Methods
+
+*/
+
+      public void submitTrigger(){
 
 
-    }
+
+           StageController.submit = true;
+           StageController.userid = IntroTyping.currentID;
+            //UnityEngine.Debug.Log(StageController.submit);
+          }
+
+
+
     public void SurveyTrigger(){
 
-      
 
-      if (StageController.userScore.Length == 2){
-
-
-        StageController.userScore = "0";
-
-      }else {
-      StageController.userScore += gameObject.name;
+      QuestionController.currentScore += gameObject.name;
 
 
-      }
+
+}
+public void SurveyTrigger10(){
+
+
+  //  QuestionController.currentScore = null;
+
+//    }else {
+  QuestionController.currentScore = "10";
+
+
+//  }
+}
+public void SurveysubmitTrigger(){
+
+
+
+     QuestionController.Qsubmit = true;
+
+}
+public void SurveyClearTrigger(){
+
+
+
+
+QuestionController.currentScore = "0";
+
+
 }
 }

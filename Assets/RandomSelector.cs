@@ -9,7 +9,7 @@ using System;
 
 public class RandomSelector : MonoBehaviour
 {
-private string filepath = @"C:\Users\Cj\Desktop\File.txt";
+private string filepath = @"C:\Expirments\bin\File.txt";
 
 
 public List<GameObject> sphereList = new List<GameObject>(12);//List of spheres
@@ -38,7 +38,7 @@ public System.Diagnostics.Stopwatch stopWatch = new Stopwatch();
     //UnityEngine.Debug.Log("NUMS:"+selectedNums[1]);
     stopWatch.Start();//start timer
   //  vPos = sphereList.Find(selectedNums[1]);
-
+  //UnityEngine.Debug.Log(stopWatch.ElapsedMilliseconds);
 
 
     }
@@ -57,7 +57,7 @@ public System.Diagnostics.Stopwatch stopWatch = new Stopwatch();
       stopWatch.Start();
       }
       if (selectedPointer == 12){
-        WriteAll();
+        //WriteAll();
       }
 
 
@@ -142,10 +142,10 @@ public static void RecordPosition(float x,float y){
 }
 */
 
-public void WriteAll(){
+public static void WriteAll(){
 
   File.Create(StageController.path).Dispose();
-  File.WriteAllText(StageController.path,"ObjectNum,"+objectNums_for_File+"\nTime,"+masterTime+"\nObjectPos,"+masterPosition);
+  File.WriteAllText(StageController.path,"ObjectNum,"+objectNums_for_File+"\nTime,"+masterTime+"\nObjectPos,"+masterPosition+"\nUserSurveyScores,"+StageController.userScore);
 
 
 
