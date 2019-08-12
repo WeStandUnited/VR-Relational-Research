@@ -4,7 +4,7 @@ Dependants: Unity 2018.3.14f1
 
 Step 1) Create folder C:\Expirments
 
-Step 2) Copy Folders bin and UserData to this Folder
+Step 2) Copy Folder "bin"  to C:\Expirments
 
 Step 3) Create Questions by finding Questions.txt and following Format 
 	(e.g) Question: How are you doing today?
