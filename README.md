@@ -1,4 +1,4 @@
-# XR-Project-GIT
+#VR-Relational-Research
 
 Dependants: Unity 2018.3.14f1
 
